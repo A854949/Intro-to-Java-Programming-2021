@@ -1,0 +1,69 @@
+package EX01_06122238;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class exam {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		String[] pointList = new String[3];
+		int index = 0;
+		
+			
+			File file = new File("C:/test.txt");
+			Scanner input = new Scanner(file);
+			InputStreamReader reader = new InputStreamReader(
+			new FileInputStream(file));
+			BufferedReader br = new BufferedReader(reader);
+			
+			while (input.hasNext()) {
+				pointList[index] = input.nextLine();
+				
+				index++;
+			}
+			input.close();
+			for(int i=0;i<pointList.length-1;i++){
+				System.out.println(pointList[i]);
+			}
+		
+		for(int i=0;i<pointList.length-1;i++){
+			for (int j=i+1;j<pointList.length;j++){
+				line(pointList[i], pointList[j]);
+				
+			}
+		}
+		crossPoints(index);
+	}
+	public static void line(String pointA, String pointB) {
+		// y=mx+b
+		// xIntercept = b/m
+		// yIntercept = b
+		Double x1 = Double.parseDouble(pointA.split(",")[0]);
+		Double y1 = Double.parseDouble(pointA.split(",")[1]);
+		Double x2 = Double.parseDouble(pointB.split(",")[0]);
+		Double y2 = Double.parseDouble(pointB.split(",")[1]);
+		Double m = (y2-y1)/(x2-x1);
+		Double b = (-(x2-x1)*-y1)+((y2-y1)*-x1);
+		String xIntercept;
+		if(m==0){
+			xIntercept = "無解";
+		}
+		else{
+			xIntercept = Math.abs(b/m)+"";
+		}
+		Double yIntercept = Math.abs(b);
+		System.out.println("點A＝"+pointA+"點B＝"+pointB);
+		System.out.println("斜率＝"+m);
+		System.out.println("x截距＝"+xIntercept);
+		System.out.println("y截距＝"+yIntercept);
+	}
+	public static void crossPoints(int pointsCount){
+		int crossPointsCount = 0;
+		for(int i=0;i<pointsCount;i++){
+			crossPointsCount+=i;
+		}
+		System.out.println("交點數量"+crossPointsCount);
+	}
+
+}

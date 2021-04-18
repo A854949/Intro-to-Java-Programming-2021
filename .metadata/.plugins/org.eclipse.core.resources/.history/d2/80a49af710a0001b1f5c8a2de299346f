@@ -1,0 +1,21 @@
+package CH09;
+
+import java.util.Scanner;
+
+public class CH09_00 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input = new Scanner(System.in);
+		int n = input.nextInt();
+		int[] list1 = new int[n];
+		for (int i = 0; i < n; i++) {
+			list1[i] = input.nextInt();
+		}
+		System.out.println(n);
+		for (int i = 0; i < n; i++) {
+			System.out.println(list1[i]);
+		}
+	}
+
+}

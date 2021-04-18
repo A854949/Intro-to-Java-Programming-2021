@@ -1,0 +1,56 @@
+package CH09;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class CH09_00 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter list1 size and contents: ");
+		int n = input.nextInt();
+		int[] list1 = new int[n];
+		for (int i = 0; i < n; i++) {
+			list1[i] = input.nextInt();
+		}
+		
+		System.out.print("Enter list1 size and contents: ");
+		int m = input.nextInt();
+		int[] list2 = new int[m];
+		for (int i = 0; i < m; i++) {
+			list2[i] = input.nextInt();
+		}
+		
+		Arrays.sort(list1);
+		System.out.print("list1 is ");
+		for (int i = 0; i < n; i++) {
+			System.out.print(list1[i] + " ");
+		}
+		
+		Arrays.sort(list2);
+		System.out.print("\nlist2 is ");
+		for (int i = 0; i < m; i++) {
+			System.out.print(list2[i] + " ");
+		}
+		
+		System.out.print("\nThe merged list is ");
+		for (int i = 0; i < merge(list1, list2).length; i++) {
+			System.out.print(merge(list1, list2)[i] + " ");
+		}
+	}
+	
+	public static int[] merge(int[] list1, int[] list2) {
+		int a = list1.length + list2.length;
+		int[] list = new int[a];
+		for (int i = 0; i < list1.length; i++) {
+			list[i] = list1[i];
+		}
+		for (int i = list1.length, j = 0; i < a; i++, j++) {
+			list[i] = list2[j];
+		}
+		Arrays.sort(list);
+		return list;
+	}
+
+}
